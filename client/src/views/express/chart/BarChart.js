@@ -15,6 +15,10 @@ const BarChart = ({ colors, chartData }) => {
     plugins: {
       legend: {
         position: 'bottom',
+        labels: {
+          color: gray,
+          padding: 10,
+        },
       },
     },
     scales: {

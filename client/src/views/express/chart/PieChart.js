@@ -3,16 +3,13 @@ import { Card } from 'react-bootstrap'
 import { Pie } from 'react-chartjs-2'
 
 const PieChart = ({ colors, chartData }) => {
-  const { teal, success } = colors
+  const { teal, success, gray } = colors
   const { f19, f20, m19, m20 } = chartData
   const danger = '#dc3545'
   const warning = '#fd7e14'
 
   // ** Chart Options
   const options = {
-    legend: {
-      display: false,
-    },
     responsive: true,
     maintainAspectRatio: false, // <-- set to false to allow setting height
     height: 185, // <-- set the height of the chart
@@ -20,11 +17,17 @@ const PieChart = ({ colors, chartData }) => {
       legend: {
         position: 'bottom', // <-- Set chart label position
         labels: {
-          display: false,
+          color: gray,
+          padding: 10,
         },
       },
-      datalabels: {
-        display: false,
+    },
+    tooltips: {
+      callbacks: {
+        label: function (tooltipItem, data) {
+          const percentage = data[tooltipItem.index] + '%'
+          return `${data.labels[tooltipItem.index]}: ${percentage}`
+        },
       },
     },
   }
