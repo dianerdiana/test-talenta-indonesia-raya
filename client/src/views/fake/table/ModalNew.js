@@ -1,5 +1,5 @@
 // ** React Import
-import React, { useState } from 'react'
+import React from 'react'
 
 // ** Thirdparty Component
 import * as yup from 'yup'
@@ -50,81 +50,57 @@ const ModalNew = (props) => {
   }
 
   return (
-    <Modal
-      {...props}
-      size='md'
-      aria-labelledby='contained-modal-title-vcenter'
-      centered
-    >
-      <Modal.Header className='border-0 shadow-none' closeButton>
-        <Modal.Title id='contained-modal-title-vcenter'>
-          Add New User
-        </Modal.Title>
+    <Modal {...props} size="md" aria-labelledby="contained-modal-title-vcenter" centered>
+      <Modal.Header className="border-0 shadow-none" closeButton>
+        <Modal.Title id="contained-modal-title-vcenter">Add New User</Modal.Title>
       </Modal.Header>
       <Modal.Body>
         <Form onSubmit={handleSubmit(onSubmit)}>
-          <Form.Group className='mb-3'>
+          <Form.Group className="mb-3">
             <Form.Label>Name</Form.Label>
             <Controller
-              id='fullname'
-              name='fullname'
-              defaultValue=''
+              id="fullname"
+              name="fullname"
+              defaultValue=""
               control={control}
               render={({ field }) => (
-                <Form.Control
-                  className='shadow-none'
-                  isInvalid={errors.fullname && true}
-                  {...field}
-                />
+                <Form.Control className="shadow-none" isInvalid={errors.fullname && true} {...field} />
               )}
             />
 
-            {errors.fullname && (
-              <Form.Text className='text-danger'>
-                {errors.fullname.message}
-              </Form.Text>
-            )}
+            {errors.fullname && <Form.Text className="text-danger">{errors.fullname.message}</Form.Text>}
           </Form.Group>
-          <Form.Group className='mb-3'>
+          <Form.Group className="mb-3">
             <Form.Label>Age</Form.Label>
             <Controller
-              id='age'
-              name='age'
-              defaultValue=''
+              id="age"
+              name="age"
+              defaultValue=""
               control={control}
               render={({ field }) => (
-                <Form.Control
-                  type='number'
-                  className='shadow-none'
-                  isInvalid={errors.age && true}
-                  {...field}
-                />
+                <Form.Control type="number" className="shadow-none" isInvalid={errors.age && true} {...field} />
               )}
             />
 
-            {errors.age && (
-              <Form.Text className='text-danger'>
-                {errors.age.message}
-              </Form.Text>
-            )}
+            {errors.age && <Form.Text className="text-danger">{errors.age.message}</Form.Text>}
           </Form.Group>
-          <Form.Group className='mb-5'>
+          <Form.Group className="mb-5">
             <Form.Label>Gender</Form.Label>
             <Controller
-              id='age'
-              name='age'
-              defaultValue=''
+              id="age"
+              name="age"
+              defaultValue=""
               control={control}
               render={({ field }) => (
                 <Controller
-                  id='gender'
-                  name='gender'
+                  id="gender"
+                  name="gender"
                   control={control}
                   render={({ field }) => (
                     <Select
                       isClearable
                       options={genderOptions}
-                      classNamePrefix='select'
+                      classNamePrefix="select"
                       theme={selectThemeColors}
                       className={classnames('react-select', {
                         'is-invalid': errors.gender && true,
@@ -136,26 +112,13 @@ const ModalNew = (props) => {
               )}
             />
 
-            {errors.gender && (
-              <Form.Text className='text-danger'>
-                {errors.gender.message}
-              </Form.Text>
-            )}
+            {errors.gender && <Form.Text className="text-danger">{errors.gender.message}</Form.Text>}
           </Form.Group>
-          <Form.Group className='text-end'>
-            <Button
-              type='reset'
-              variant='dark'
-              className='px-3 shadow fw-bold text-white me-3'
-              onClick={handleReset}
-            >
+          <Form.Group className="text-end">
+            <Button type="reset" variant="dark" className="px-3 shadow fw-bold text-white me-3" onClick={handleReset}>
               Reset
             </Button>
-            <Button
-              type='submit'
-              variant='success'
-              className='px-4 shadow fw-bold text-dark'
-            >
+            <Button type="submit" variant="success" className="px-4 shadow fw-bold text-dark">
               Add
             </Button>
           </Form.Group>

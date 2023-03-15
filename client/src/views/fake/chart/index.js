@@ -2,17 +2,8 @@
 import React from 'react'
 
 // ** Third Party Component
-import { Card, Col, Row } from 'react-bootstrap'
-import {
-  ArcElement,
-  Chart as ChartJS,
-  CategoryScale,
-  LinearScale,
-  BarElement,
-  Title,
-  Tooltip,
-  Legend,
-} from 'chart.js'
+import { Col, Row } from 'react-bootstrap'
+import { ArcElement, Chart as ChartJS, CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend } from 'chart.js'
 
 // ** Store & Redux
 import { useSelector } from 'react-redux'
@@ -22,15 +13,7 @@ import DoughnutChart from './DoughnutChart'
 import PieChart from './PieChart'
 import BarChart from './BarChart'
 
-ChartJS.register(
-  ArcElement,
-  CategoryScale,
-  LinearScale,
-  BarElement,
-  Title,
-  Tooltip,
-  Legend
-)
+ChartJS.register(ArcElement, CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend)
 
 const ChartComponent = () => {
   // ** Function
@@ -52,13 +35,13 @@ const ChartComponent = () => {
 
   return (
     <Row>
-      <Col sm='4'>
+      <Col sm="4">
         <DoughnutChart colors={colors} male={male} female={female} />
       </Col>
-      <Col sm='4'>
+      <Col sm="4">
         <PieChart colors={colors} male={male} female={female} />
       </Col>
-      <Col sm='4'>
+      <Col sm="4">
         <BarChart colors={colors} male={male} female={female} />
       </Col>
     </Row>
