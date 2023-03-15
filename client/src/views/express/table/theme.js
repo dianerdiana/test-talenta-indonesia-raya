@@ -16,8 +16,8 @@ const solarized = createTheme('solarized', {
     default: '#a3a5aa',
   },
   button: {
-    default: '#2aa198',
-    hover: 'rgba(0,0,0,.08)',
+    default: '#01fb34',
+    hover: '#151a26',
     focus: 'rgba(255,255,255,.12)',
     disabled: 'rgba(255, 255, 255, .34)',
   },

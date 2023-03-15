@@ -3,16 +3,7 @@ import React from 'react'
 
 // ** Third Party Component
 import { Col, Row } from 'react-bootstrap'
-import {
-  ArcElement,
-  Chart as ChartJS,
-  CategoryScale,
-  LinearScale,
-  BarElement,
-  Title,
-  Tooltip,
-  Legend,
-} from 'chart.js'
+import { ArcElement, Chart as ChartJS, CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend } from 'chart.js'
 
 // ** Store & Redux
 import { useSelector } from 'react-redux'
@@ -22,27 +13,15 @@ import DoughnutChart from './DoughnutChart'
 import PieChart from './PieChart'
 import BarChart from './BarChart'
 
-ChartJS.register(
-  ArcElement,
-  CategoryScale,
-  LinearScale,
-  BarElement,
-  Title,
-  Tooltip,
-  Legend
-)
+ChartJS.register(ArcElement, CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend)
 
 const ChartComponent = () => {
-  // ** Function
-  const genderCount = (gender) => {
-    const count = users.filter((user) => user.gender.toLowerCase() === gender)
-    return count.length
-  }
-
   // ** Vars
-  const users = useSelector((state) => state.express.allData)
-  const male = genderCount('male')
-  const female = genderCount('female')
+  const chartData = useSelector((state) => state.express.bar)
+  const { f19, f20, m19, m20 } = chartData
+
+  const male = m19 + m20
+  const female = f19 + f20
 
   const colors = {
     success: '#28dac6',
@@ -52,14 +31,14 @@ const ChartComponent = () => {
 
   return (
     <Row>
-      <Col sm='4'>
+      <Col sm="4">
         <DoughnutChart colors={colors} male={male} female={female} />
       </Col>
-      <Col sm='4'>
+      <Col sm="4">
         <PieChart colors={colors} male={male} female={female} />
       </Col>
-      <Col sm='4'>
-        <BarChart colors={colors} male={male} female={female} />
+      <Col sm="4">
+        <BarChart colors={colors} chartData={chartData} />
       </Col>
     </Row>
   )

@@ -4,7 +4,7 @@ import React, { useEffect, createRef } from 'react'
 // ** Third Party Component
 
 // ** Store & Redux
-import { getAllData } from '../store/express'
+import { getAllData, getBarData } from '../store/express'
 import { useDispatch } from 'react-redux'
 
 // ** Custom Component
@@ -18,6 +18,7 @@ const UserList = () => {
 
   useEffect(() => {
     dispatch(getAllData())
+    dispatch(getBarData())
   }, [dispatch])
 
   return (

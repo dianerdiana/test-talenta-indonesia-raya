@@ -61,18 +61,41 @@ exports.getAllData = async (req, res) => {
 }
 
 exports.getBarData = async (req, res) => {
-  try {
-    const { count, row } = await User.findAndCountAll({
+  const count = async (gender, age, op) => {
+    const total = await User.count({
       where: {
-        gender: {
-          [Op.like]: 'Male%',
-        },
+        [Op.and]: [
+          {
+            gender,
+          },
+          {
+            age: { [Op[op]]: age },
+          },
+        ],
       },
     })
 
-    res.status(200).send({
-      data: count,
-    })
+    return total
+  }
+
+  try {
+    Promise.all([
+      count('Female', 19, 'lte'),
+      count('Female', 20, 'gte'),
+      count('Male', 19, 'lte'),
+      count('Male', 20, 'gte'),
+    ]).then((total) =>
+      res.status(200).send({
+        status: 'success',
+        message: 'Success',
+        data: {
+          f19: total[0],
+          f20: total[1],
+          m19: total[2],
+          m20: total[3],
+        },
+      })
+    )
   } catch (error) {
     res.status(500).send({
       status: 'error',

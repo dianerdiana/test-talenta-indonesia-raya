@@ -2,12 +2,9 @@
 import { Card } from 'react-bootstrap'
 import { Bar } from 'react-chartjs-2'
 
-const BarChart = ({ colors, male, female }) => {
+const BarChart = ({ colors, chartData }) => {
   const { gray, teal, success } = colors
-  const roundUpToTen = (num = []) => {
-    const highestNum = Math.max(...num)
-    return Math.ceil(highestNum / 10) * 10 + 5
-  }
+  const { f19, f20, m19, m20 } = chartData
 
   const options = {
     responsive: true,
@@ -30,7 +27,6 @@ const BarChart = ({ colors, male, female }) => {
       },
       y: {
         min: 0,
-        max: roundUpToTen([male, female]),
         grid: {
           color: gray,
           borderColor: gray,
@@ -44,25 +40,23 @@ const BarChart = ({ colors, male, female }) => {
   }
 
   const data = {
-    labels: ['Gender'],
+    labels: ['0 - 19', '20 ~ more'],
     datasets: [
       {
         label: 'Male',
-        data: [male],
+        data: [m19, m20],
         backgroundColor: teal,
-        // barThickness: 20,
       },
       {
         label: 'Female',
-        data: [female],
+        data: [f19, f20],
         backgroundColor: success,
-        // barThickness: 20,
       },
     ],
   }
 
   return (
-    <Card bg='secondary' className='shadow p-3'>
+    <Card bg="secondary" className="shadow p-3">
       <Bar data={data} options={options} />
     </Card>
   )

@@ -16,8 +16,8 @@ import { Provider } from 'react-redux'
 
 // ** Routing
 import { BrowserRouter } from 'react-router-dom'
-import { Spinner } from 'react-bootstrap'
 import { ToastContainer } from 'react-toastify'
+import LoadingPage from './views/LoadingPage'
 
 // ** Lazy load App
 const LazyApp = lazy(() => import('./App'))
@@ -27,7 +27,7 @@ root.render(
   // <React.StrictMode>
   <BrowserRouter>
     <Provider store={store}>
-      <Suspense fallback={<Spinner />}>
+      <Suspense fallback={<LoadingPage />}>
         <ToastContainer />
         <LazyApp />
       </Suspense>
