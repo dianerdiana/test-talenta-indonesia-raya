@@ -61,7 +61,12 @@ const BarChart = ({ colors, chartData }) => {
 
   return (
     <Card bg="secondary" className="shadow p-3">
-      <Bar data={data} options={options} />
+      <Card.Header>
+        <Card.Title className="text-white">Bar Age</Card.Title>
+      </Card.Header>
+      <Card.Body>
+        <Bar data={data} options={options} />
+      </Card.Body>
     </Card>
   )
 }

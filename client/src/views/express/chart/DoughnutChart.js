@@ -36,8 +36,13 @@ const DoughnutChart = ({ colors, male, female }) => {
   }
 
   return (
-    <Card bg='secondary' className='shadow p-3'>
-      <Doughnut data={data} options={options} />
+    <Card bg="secondary" className="shadow p-3">
+      <Card.Header>
+        <Card.Title className="text-white">Total Gender</Card.Title>
+      </Card.Header>
+      <Card.Body>
+        <Doughnut data={data} options={options} />
+      </Card.Body>
     </Card>
   )
 }

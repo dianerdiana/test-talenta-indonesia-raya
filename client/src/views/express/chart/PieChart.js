@@ -47,7 +47,12 @@ const PieChart = ({ colors, chartData }) => {
 
   return (
     <Card bg="secondary" className="shadow p-3">
-      <Pie data={data} options={options} />
+      <Card.Header>
+        <Card.Title className="text-white">Percentage Pie</Card.Title>
+      </Card.Header>
+      <Card.Body>
+        <Pie data={data} options={options} />
+      </Card.Body>
     </Card>
   )
 }
