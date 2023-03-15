@@ -2,11 +2,17 @@
 import { Card } from 'react-bootstrap'
 import { Pie } from 'react-chartjs-2'
 
-const PieChart = ({ colors, male, female }) => {
-  const { gray, teal, success } = colors
+const PieChart = ({ colors, chartData }) => {
+  const { teal, success } = colors
+  const { f19, f20, m19, m20 } = chartData
+  const danger = '#dc3545'
+  const warning = '#fd7e14'
 
   // ** Chart Options
   const options = {
+    legend: {
+      display: false,
+    },
     responsive: true,
     maintainAspectRatio: false, // <-- set to false to allow setting height
     height: 185, // <-- set the height of the chart
@@ -14,21 +20,22 @@ const PieChart = ({ colors, male, female }) => {
       legend: {
         position: 'bottom', // <-- Set chart label position
         labels: {
-          color: gray,
-          padding: 20,
+          display: false,
         },
+      },
+      datalabels: {
+        display: false,
       },
     },
   }
 
   // ** Chart data
   const data = {
-    labels: ['Male', 'Female'],
+    labels: ['Male age 19', 'Male age 20', 'Female age 19', 'Female age 20'],
     datasets: [
       {
-        labels: ['Male', 'Female'],
-        data: [male, female],
-        backgroundColor: [teal, success],
+        data: [m19, m20, f19, f20],
+        backgroundColor: [teal, success, warning, danger],
         borderWidth: 0,
         pointStyle: 'rectRounded',
       },
@@ -36,7 +43,7 @@ const PieChart = ({ colors, male, female }) => {
   }
 
   return (
-    <Card bg='secondary' className='shadow p-3'>
+    <Card bg="secondary" className="shadow p-3">
       <Pie data={data} options={options} />
     </Card>
   )
