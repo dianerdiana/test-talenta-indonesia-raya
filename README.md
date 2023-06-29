@@ -7,6 +7,7 @@ Langkah-langkah yang diperlukan setelah clone:
 ```javascript
 npm install
 ```
+### b. Ubah file `.env.example` menjadi `.env` dan lakukan penyesuaian (Jika ada yang harus disesuaikan)
 
 ## 2. Sisi Server
 ### a. Install Packages
@@ -14,10 +15,7 @@ npm install
 npm install
 ```
 
-### b. Buat Database
-```sql
-Pastikan sudah membuat database dengan nama `db_test`
-```
+### b. Ubah file `.env.example` menjadi `.env` dan lakukan penyesuaian koneksi database
 
 ### c. Lakukan Migrasi
 ```javascript
